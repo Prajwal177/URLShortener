@@ -49,8 +49,8 @@ Once logged in, users can:
 
 ### Clone the Repository
 ```bash
-git clone https://github.com/Prajwal177/URLShortner.git
-cd URLShortner
+git clone https://github.com/Prajwal177/URLShortener.git
+cd URLShortener
 ```
 ### Create a Virtual Environment
 ```bash
