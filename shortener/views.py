@@ -34,6 +34,7 @@ def login_view(request):
         form = AuthenticationForm()
     return render(request, "shortener/login.html", {"form": form})
 
+# Logout
 def logout_view(request):
     logout(request)
     return redirect("shortener:login")
@@ -63,7 +64,7 @@ def delete_url(request, pk):
     return render(request, "shortener/confirm_delete.html", {"object": obj})
 
 # Redirect endpoint
-def redirect_view(request, short_code):
+def redirect_view(short_code):
     short_url = get_object_or_404(ShortURL, short_code=short_code)
     short_url.click_count += 1
     short_url.save()

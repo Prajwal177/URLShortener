@@ -24,5 +24,4 @@ class ShortURLForm(forms.ModelForm):
         fields = ["original_url",]
         widgets = {
             "original_url": forms.URLInput(attrs={"placeholder": "https://example.com/very/long/url"})
-
         }

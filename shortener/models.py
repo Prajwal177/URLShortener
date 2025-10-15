@@ -1,4 +1,4 @@
-import string
+import uuid
 import random
 from django.db import models
 from django.contrib.auth.models import User
@@ -23,8 +23,19 @@ class ShortURL(models.Model):
     click_count = models.IntegerField(default=0)
 
     def save(self, *args, **kwargs):
+
         if not self.id:
             super().save(*args, **kwargs)
+
+        if not hasattr(self, "randomized"):
+            offset = random.randint(1000, 99999)
+
+            new_id = self.id + offset
+
+            ShortURL.objects.filter(pk=self.id).update(id=new_id)
+
+            self.id = new_id
+            self.randomized = True
 
         if not self.short_code:
             self.short_code = xor_encoder(self.id)
